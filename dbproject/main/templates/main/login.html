@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--메인 화면-->
+	<head>
+		<meta charset="utf-8">
+		<title>BestPreswot</title>
+		<link rel="stylesheet" type="text/css" href="style/styler.css">
+		
+	</head>
+	<body>
+		<div class="back">
+			<div style="text-align:left" class="header" height=10%>
+				<!--메인 로고-->
+				<a href="main.html"><img src = "images/title.png"></a>
+			</div>
+			<div class="form" height=80%>
+				<div class="loginer">
+					<h1 style="text-align:center" id="demo">로그인</h1>
+					<form name = "loginform" id="loginform" action="" method="post">
+                    {% csrf_token %}
+                    Username:
+					<input name="loginid" type="text" placeholder="email" autofocus/>
+                    <p></p>
+                    Password:
+					<input name="loginpw" type="text" placeholder="password"/>
+					<p></p>
+					<button>로그인</button>
+					</form>
+				</div>
+				
+				<a href="https://portal.yonsei.ac.kr">연세포탈 (https://portal.yonsei.ac.kr)</a>
+				<p></p>
+				<a href="https://yscec.yonsei.ac.kr">와이섹 (https://yscec.yonsei.ac.kr)</a>
+				<p></p>
+				<a href="https://yonsei.ac.kr">연세대학교 (https://yonsei.ac.kr)</a>
+				<p></p>
+				<a href="https://career.yonsei.ac.kr">커리어연세 (https://career.yonsei.ac.kr)</a>
+				<p></p>
+				<a href="http://preswot.com/">프리스왓 (http://preswot.com)</a>
+				<p></p>
+			</div>
+			<!--copyright-->
+			<footer class="footer" height=10%>
+				 <p>&copy;&nbsp;Copyright. By team_7 since 2019. </p>
+			</footer>
+		</div>
+	</body>
+</html>
+	
