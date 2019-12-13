@@ -74,17 +74,6 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Classes(models.Model):
-    class_id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    capacity = models.IntegerField()
-    master_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'classes'
-
-
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -129,15 +118,35 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class LectureKeywords(models.Model):
-    id = models.IntegerField(primary_key=True)
-    lecture_id = models.IntegerField()
-    keyword = models.CharField(max_length=255)
-    weight = models.FloatField()
+class Users(models.Model):
+    user_id = models.IntegerField(primary_key=True)
+    email = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
-        db_table = 'lecture_keywords'
+        managed = True
+        db_table = 'users'
+
+class Classes(models.Model):
+    class_id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255)
+    capacity = models.IntegerField()
+    master = models.ForeignKey(Users, db_column='master_id', on_delete=models.CASCADE)
+
+    class Meta:
+        managed = True
+        db_table = 'classes'
+
+class UserClasses(models.Model):
+    user_class_id = models.IntegerField(primary_key=True)
+    role = models.CharField(max_length=255)
+    class_field1 = models.ForeignKey(Classes,db_column='class_id', on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, db_column='user_id', on_delete=models.CASCADE)
+    class Meta:
+        managed = True
+        db_table = 'user_classes'
+        index_together = (('class_field1','user'),)
 
 
 class Lectures(models.Model):
@@ -145,23 +154,22 @@ class Lectures(models.Model):
     name = models.CharField(max_length=255)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-    class_id = models.IntegerField()
+    class_field = models.ForeignKey(Classes, db_column='class_id', on_delete=models.CASCADE)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'lectures'
+        unique_together = (('lecture_id', 'class_field'),)
 
-
-class QuestionKeywords(models.Model):
-    question_id = models.IntegerField()
+class LectureKeywords(models.Model):
+    id = models.IntegerField(primary_key=True)
+    lecture = models.ForeignKey(Lectures, db_column='lecture_id', on_delete=models.CASCADE)
     keyword = models.CharField(max_length=255)
-    lecture_id = models.IntegerField()
-    score_portion = models.IntegerField(blank=True, null=True)
+    weight = models.FloatField()
 
     class Meta:
-        managed = False
-        db_table = 'question_keywords'
-
+        managed = True
+        db_table = 'lecture_keywords'
 
 class Questions(models.Model):
     question_id = models.IntegerField(primary_key=True)
@@ -171,31 +179,83 @@ class Questions(models.Model):
     answer = models.TextField()
     difficulty = models.IntegerField(blank=True, null=True)
     real_difficulty = models.IntegerField(blank=True, null=True)
-    lecture_id = models.IntegerField()
+    lecture = models.ForeignKey(Lectures, db_column='lecture_id', on_delete=models.CASCADE)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'questions'
+        unique_together = (('question_id','lecture'),)
 
-
-class UserClasses(models.Model):
-    role = models.CharField(max_length=255)
-    class_id = models.IntegerField()
-    user_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'user_classes'
-
-
-class Users(models.Model):
-    user_id = models.IntegerField(primary_key=True)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
-    type = models.CharField(max_length=255)
+class QuestionKeywords(models.Model):
+    id = models.IntegerField(primary_key=True)
+    question_field = models.ForeignKey(Questions, db_column='question_id', on_delete=models.CASCADE,)
+    keyword = models.CharField(max_length=255)
+    lecture_id = models.IntegerField()
+    score_portion = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'users'
-    def __str__(self):
-        return self.user_id
+        managed = True
+        db_table = 'question_keywords'
+
+class QuestionParameter(models.Model):
+    question_field = models.ForeignKey(Questions, db_column='question_id', on_delete=models.CASCADE)
+    key_value = models.IntegerField(null=False)
+    pr1 = models.FloatField(blank=True, null=True)
+    pr2 = models.FloatField(blank=True, null=True)
+    pr3 = models.FloatField(blank=True, null=True)
+    pr4 = models.FloatField(blank=True, null=True)
+    pr5 = models.FloatField(blank=True, null=True)
+    answer = models.FloatField()
+
+    class Meta:
+        managed = True
+        db_table = 'question_parameter'
+
+class QuestionBank(models.Model):
+    questionbank_id = models.IntegerField(primary_key=True)
+    types = models.IntegerField()
+    question = models.CharField(max_length=1023)
+    bogi = models.TextField(blank=True, null=True)
+    answer = models.TextField()
+    difficulty = models.IntegerField(blank=True, null=True)
+    real_difficulty = models.IntegerField(blank=True, null=True)
+    teacher_field = models.ForeignKey(Users, db_column='user_id', on_delete=models.CASCADE)
+
+    class Meta:
+        managed = True
+        db_table = 'question_bank'
+
+class QuestionKeywordsBank(models.Model):
+    id = models.IntegerField(primary_key = True)
+    questionbank_field = models.ForeignKey(QuestionBank, db_column='questionbank_id', on_delete=models.CASCADE)
+    keyword = models.CharField(max_length=255)
+    score_portion = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'question_keywords_bank'
+
+class QuestionParameterBank(models.Model):
+    id = models.IntegerField(primary_key=True)
+    key_value = models.IntegerField()
+    questionbank_field = models.ForeignKey(QuestionBank, db_column='questionbank_id', on_delete=models.CASCADE)
+    pr1 = models.FloatField(blank=True, null=True)
+    pr2 = models.FloatField(blank=True, null=True)
+    pr3 = models.FloatField(blank=True, null=True)
+    pr4 = models.FloatField(blank=True, null=True)
+    pr5 = models.FloatField(blank=True, null=True)
+    answer = models.FloatField()
+    
+    class Meta:
+        managed = True
+        db_table = 'question_parameter_bank'
+
+class StudentQuestionLog(models.Model):
+    id = models.IntegerField(primary_key=True)
+    user_field = models.ForeignKey(Users, db_column = 'user_id', on_delete=models.CASCADE)
+    question_field = models.ForeignKey(Questions, db_column='question_id', on_delete=models.CASCADE)
+    score = models.IntegerField()
+
+    class Meta:
+        managed = True
+        db_table = 'Student_Question_Log'

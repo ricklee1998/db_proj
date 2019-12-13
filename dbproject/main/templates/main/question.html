@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html
+    lang="en">
+    <!--메인 화면-->
+    <head>
+        <meta charset="utf-8">
+        <title>BestPreswot</title>
+        <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
+        <script type="text/javascript">
+            function gotoclasses() {
+                var link = document.location.href;
+                var linksplit = link.split("teacherpage");
+                location.href = linksplit[0] + "teacherpage";
+                console.log(link);
+                console.log(linksplit[0]);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="back">
+            <div
+                style="text-align:left" class="header" height="10%">
+                <!--메인 로고-->
+                <a><img src="{% static 'images/titler.png' %}"></a>
+                <button id="myclasslogin" type="button" onclick="location.href='http://18.217.88.225:8000/'">로그아웃</button>
+                <button>내정보</button>
+                <button type="button" onclick="gotoclasses()">수강중인목록</button>
+            </div>
+            <div class="form" height="80%">
+                <h2>문제들 보기</h2>
+                <div class="classtableq">
+                    <div class="classtableqin">
+                        <div class="classclass">
+                            <form name="classform" id="classform" action="" method="post">
+                                {% csrf_token %}
+                                <button name = "addquestion" type="submit">문제추가</button>
+                            </form>
+                            <div class="classsub1">
+                                    <form name="classrevise" id="classrevise" action="" method="post">
+                                        {% csrf_token %}
+                                        <button name="add_keywords" type="submit">키워드추가</button>
+                                    </form>
+                            </div>
+                            <div class="classsub2">
+                                <form name="classrevise" id="classrevise" action="" method="post">
+                                    {% csrf_token %}
+                                    <button name="questionbank" type="submit">문제은행</button>
+                                </form>
+                            </div>
+                            <p></p>
+                        </div>
+                        <form action="" method="post">
+                        <table id="myclasstable">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>문제</th>
+                		    <th>키워드</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+				    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyclass">
+                                {% for i in question_id %}
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ i.1 }}</td>
+               <td>{% for j in keywords %}
+               {% if j.0 == i.0 %}{{ j.1 }},{% endif %}
+                                        {% endfor %}</td>
+
+                                        <td>
+                                            <button type="button" onclick="location.href='./{{ i.0 }}/keywords'">키워드 추가</button>
+                                            {% csrf_token %}
+                                            <button name = "add_to_bank" value="{{ i.0 }}" type="submit">문제은행에 추가</button>
+                                        </td>
+                                        <td><button name = "showlog" value ="{{ i.0 }}" type = "submit">로그보기</button></td>
+                                        <td><button name = "delete" value ="{{ i.0 }}" type = "submit">문제삭제</button></td>
+                                        <td>{% if i.2 == 2 %}<button type="button" onclick="location.href='./{{ i.0 }}/upload'">파일 업로드</button>{% endif %}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        </form>
+                        </div>
+                </div>
+            </div>
+            <!—copyright—>
+            <footer class="footer" height="10%">
+                <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

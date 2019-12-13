@@ -1,0 +1,218 @@
+html,body,h1,h2,h3,h4,h5,h6,ul,li,a
+{
+	margin:0;
+	padding:0;
+}
+body{
+	/* background-image: url("../images/background.jpg"); */
+	background-color: rgba(54, 62, 81, 1);
+	color: white;
+}
+/*큰 화면 미디어 쿼리 min 1px*/
+@media only screen and (min-width:1px){
+	/*same with small media query except size*/
+	body{
+		/* background-image: url("../images/background.jpg"); */
+		background-color: rgba(54, 62, 81, 1);
+		color: white;
+	}	
+	
+	.form{
+		position: relative;
+		z-index:1; 
+		/* background: #ffffff; */
+		background-color: rgba(54, 62, 81, 1);
+		/* padding-bottom: 80px; */
+		width: 100%;
+		height: 550px;
+		text-align: center;
+	}
+	.form a{
+		margin: 0 0 25px;
+		padding: 10px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		color: white;
+		text-decoration: none;
+	}
+	.form h1{
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		
+		margin: 0 0 15px;
+	}
+	.form h2{
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: bold;
+		float: left;
+		
+		padding-left : 70px;
+		padding-top : 10px;
+		margin: 0 0 25px;
+	}
+	.form p{
+		text-align: center;
+		line-height:30px;
+		
+	}
+	.form input {
+		border-radius:5px;
+		max-width: 240px;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		outline: 0;
+		background: #cce6ff;
+		width: 80%;
+		border: 0;
+		margin: 0 0 15px;
+		padding: 15px;
+		box-sizing: border-box;
+		font-size: 14px;
+	}
+	.form button {
+		border-radius:5px;
+		max-width: 300px;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		text-transform: uppercase;
+		outline: 0;
+		background: #5c92ff;
+		width: 80%;
+		border: 0;
+		padding: 15px;
+		color: #FFFFFF;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.form button:hover,.form button:active,.form button:focus {
+		background: #4775d1;
+	}
+	.loginer{
+		padding: 100px 0;
+		height: 240px;
+		background-color: rgba(54, 62, 81, 1);
+		padding-bottom:80px;
+		overflow: hidden;
+	}
+	.loginer p{
+		text-align: center;
+		line-height:30px;
+		
+	}
+	.loginer h1{
+		margin-bottom: 30px;
+	}
+	.problem1 {
+		background-color: #cce6ff;
+		-webkit-border-radius: 0.5em;
+		margin-left:120px;
+		margin-top:80px;
+		width: 500px;
+		height:120px;
+	}
+	.problem1 p{
+		color:#000000;
+		font-weight: bold;
+		float:left;
+		padding-left: 15px;
+	}
+	.problem2 {
+		background-color: #cce6ff;
+		-webkit-border-radius: 0.5em;
+		margin-left:120px;
+		margin-top:20px;
+		width: 500px;
+		height:150px;
+	}
+	.problem2 p{
+		color:#000000;
+		font-weight: bold;
+		float:left;
+		padding-left: 15px;
+	}
+	.problem2 input{
+
+	}
+	.problem3{
+		margin-left:150px;
+		margin-top:20px;
+	}
+	.problem3 button {
+		border-radius:5px;
+		max-width: 100px;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		text-transform: uppercase;
+		outline: 0;
+		background: #5c92ff;
+		border: 0;
+		padding: 15px;
+		color: #FFFFFF;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.problem3 button:hover,.form button:active,.form button:focus {
+		background: #4775d1;
+	}
+
+	.back{
+		width:100%;
+	}
+	.header{
+		position: relative;
+		top: 0px;
+		width:100%;
+		border-bottom: 2px solid gray;
+	}
+	.header img{
+		width:auto;
+		height: 50px;
+	}
+	.header button{
+		float:right;
+		text-align:bottom;
+		border-radius:5px;
+		outline: 0;
+		border: 0;
+		height:50px;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: bold;
+		font-size: 18px;
+		padding-right: 115px;
+		color: #ffffff;
+		background: rgba( 255, 255, 255, 0);
+		cursor: pointer;
+	}
+	.header a{
+		color:#fff;
+		padding-left:45px;
+		cursor:pointer;
+	}	
+	.footer{
+		position:absolute;
+		bottom:0;
+		width:100%;
+		height:7%;
+		background:rgb(28, 35, 56);
+		box-shadow: 0 0 2px 0 gray;
+	}
+	.footer p{
+		text-align:right;
+		line-height:15px;
+		padding:0px 30px 0px 0px;
+		font-size:17px;
+		color:#ffffff
+	}
+	.loginform_input {
+		width: 400px;
+		margin-left: calc(50% - 200px);
+	}
+}

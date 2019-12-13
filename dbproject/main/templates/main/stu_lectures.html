@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html
+    lang="en">
+    <!--메인 화면-->
+    <head>
+        <meta charset="utf-8">
+        <title>BestPreswot</title>
+        <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
+        <script type="text/javascript">
+            function gotoclasses() {
+                var link = document.location.href;
+                var linksplit = link.split("studentpage");
+                location.href = linksplit[0] + "studentpage";
+                console.log(link);
+                console.log(linksplit[0]);
+            }
+	    function conbutton(qu_url,start_time_y,start_time_m,start_time_d,start_time_h,start_time_i,start_time_s,end_time_y,end_time_m,end_time_d,end_time_h,end_time_i,end_time_s){
+		var date3 = new Date();
+		var date1 = new Date(start_time_y, start_time_m-1, start_time_d, start_time_h, start_time_i, 0, 0);
+		var date2 = new Date(end_time_y, end_time_m-1, end_time_d, end_time_h, end_time_i, 0, 0);
+		console.log(start_time_y);
+		console.log(start_time_m);
+		console.log(start_time_d);
+		console.log(start_time_h);
+		console.log(start_time_i);
+		console.log(start_time_s);
+		console.log(end_time_y);
+		console.log(end_time_m);
+		console.log(end_time_d);
+		console.log(end_time_h);
+		console.log(end_time_i);
+		console.log(end_time_s);		
+		console.log(date1);
+		console.log(date2);
+		if(date1<date3 && date2>date3){
+		    window.location.href=qu_url;
+		}else{
+		    alert("강의 종료됨");
+		}
+	    }
+        </script>
+    </head>
+    <body>
+        <div class="back">
+            <div
+                style="text-align:left" class="header" height="10%">
+                <!--메인 로고-->
+                <a><img src="{% static 'images/titler.png' %}"></a>
+                <button id="myclasslogin" type="button" onclick="location.href='http://18.217.88.225:8000/'">로그아웃</button>
+                <button>내정보</button>
+                <button type="button" onclick="gotoclasses()">수강중인목록</button>
+            </div>
+            <div class="form" height="80%">
+                <h2>수강 중인 강의</h2>
+                <div class="classtablew">
+                    <div class="classtablewin">
+                        <div class="classclass">
+                            <p></p>
+                        </div>
+                        <table id="myclasstable">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>과목</th>
+                                    <th>강사</th>
+				    <th>시작시간</th>
+				    <th>종료시간</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyclass">
+                                {% for i in lecture_name %}
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <a href="./{{ i.1 }}">{{ i.0 }}</a>
+                                        </td>
+                                        <td>me</td>
+					<td>{{i.2}}</td>
+					<td>{{i.3}}</td>
+                                        <td>
+					    <button type="button" onclick="conbutton('./{{ i.1 }}/question','{{i.2|date:"Y"}}','{{i.2|date:"m"}}','{{i.2|date:"d"}}','{{i.2|date:"H"}}','{{i.2|date:"i"}}','{{i.2|date:"s"}}','{{i.3|date:"Y"}}','{{i.3|date:"m"}}','{{i.3|date:"d"}}','{{i.3|date:"H"}}','{{i.3|date:"i"}}','{{i.3|date:"s"}}')">강의보기</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!—copyright—>
+            <footer class="footer" height="10%">
+                <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

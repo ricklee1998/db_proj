@@ -1,0 +1,745 @@
+ html,body,h1,h2,h3,h4,h5,h6,ul,li,a
+{
+	margin:0;
+	padding:0;
+}
+body{
+	background-image:url("../images/back.jpg");
+	
+}
+/*작은 화면 미디어 쿼리 max 600px*/
+@media only screen and (max-width:600px){
+	/*배경*/
+	body{
+		background-image:url("../images/back.jpg");
+		width:480px;
+		margin:10px auto;
+	}
+	/*프로필 틀*/
+	.profile{
+		border-radius:20px;
+		position: relative;
+		z-index:1; 
+		background: #69447c;
+		max-width: 190px;
+		height: 330px;
+		margin: 0 auto 100px;
+		padding: 45px;
+		text-align: center;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
+	/*프로필 사진*/
+	.profile img{
+		width:70%;
+		height:50%;
+	}
+	/*프로필 내용*/
+	.profile p{
+		padding: 0 25px;
+		text-align: left;
+		font-family: "Roboto", sans-serif;
+		color:#ffffff;
+		font-size: 12px;
+		text-shadow: 5px 7px 4px #000000;
+	}
+	/*개발자 소개 배경*/
+	.aboutme{
+		padding: 80px 0;
+		background: #69447c;
+		background: -webkit-gradient(linear, left top, right bottom, from(#69447c), to(#53e3a6));
+		background: linear-gradient(to bottom right, #69447c 0%, #daabf2 100%);
+		height: 580px;
+		overflow: hidden;
+	}
+	/*순위 차트*/
+	.chat{
+		padding: 0 20px;
+		background: #69447c;
+		text-align:left;
+		color:#ffffff;
+		
+	}
+	/*순위 차트 테이블*/
+	.chat table{
+		border-collapse: collapse;
+		max-width: 480px;
+		font-size:10px;
+	}
+	.chat a{
+		text-decoration:none;
+		color:#fff
+	}
+	/*순위 차트 테이블 리스트*/
+	.chat td, th{
+		border: 1px solid #aa7cc1;
+		text-align: left;
+		padding: 6px;
+	}
+	/*순위 차트 테이블 리스트 짝수 색 변환*/
+	.chat tr:nth-child(even) {
+		background-color: #aa7cc1;
+	}
+	/*차트화면 빈공간 채우기*/
+	.chatnonebox{
+		font-size:13px;
+		border-radius:20px;
+		color:#69447c;
+		margin-left:10px;
+		width:100px;
+		height:30px;
+		line-height:30px;
+		text-decoration:none;
+		background-color:#69447c;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-weight:bold;
+	}
+	/*차트 페이지 확인*/
+	.chatend{
+		background: #69447c;
+		text-align:center;
+		color:#ffffff;
+		margin-top: 50px;
+		font-size:20px;
+	}
+	/*듣기 툴 버튼*/
+	.chatbox{
+		margin-top:10px;
+		background: #69447c;
+		width:100px;
+		float:left;
+		padding:10px;
+		text-align:justify;
+		color:#fff;
+		font-size:11px;
+	}
+	.chatbox a{
+		font-size:11px;
+		border-radius:20px;
+		color:#000;
+		margin-left:5px;
+		width:70px;
+		height:30px;
+		line-height:30px;
+		text-decoration:none;
+		background-color:#fff;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-weight:bold;
+	}
+	/*회원가입 틀*/
+	.form{
+		border-radius:20px;
+		position: relative;
+		z-index:1; 
+		background: #69447c;
+		max-width: 190px;
+		height: 330px;
+		margin: 0 auto 100px;
+		padding: 45px;
+		text-align: center;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
+	.form a{
+		color:#ffffff;
+	}
+	.form h1{
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		color:#ffffff;
+		margin: 0 0 25px;
+	}
+	.form input {
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		outline: 0;
+		background: #f2f2f2;
+		width: 80%;
+		height: 20px;
+		border: 0;
+		margin: 0 0 15px;
+		padding: 15px;
+		box-sizing: border-box;
+		font-size: 12px;
+	}
+	.form button {
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		text-transform: uppercase;
+		outline: 0;
+		background: #b491c6;
+		width: 80%;
+		border: 0;
+		padding: 13px;
+		color: #FFFFFF;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.form button:hover,.form button:active,.form button:focus {
+		background: #8d6d9e;
+	}
+	/*로그인 툴*/
+	.loginer{
+		color:#fff;
+		width:100%;
+		height:35px;
+	}
+	.joiner{
+		padding: 80px 0;
+		background: #69447c;
+		background: -webkit-gradient(linear, left top, right bottom, from(#69447c), to(#53e3a6));
+		background: linear-gradient(to bottom right, #69447c 0%, #daabf2 100%);
+		height: 580px;
+		overflow: hidden;
+	}
+	.joiner p{
+		text-align: center;
+		line-height:30px;
+		color:#fff;
+		padding:0 15px;
+	}
+	/*배경 설정*/
+	.back{
+		width:480px;
+		margin:10px auto;
+	}
+	.header{
+		height:70px;
+		color:#fff;
+	}
+	.header img{
+		margin: 10px;
+		-webkit-transition: -webkit-transform 4s;
+		-moz-transition: -moz-transform 4s;
+		-o-transition: -o-transform 4s;
+		transition: transform 4s;
+	}
+	.header img:hover{
+		-webkit-transform: rotate(360deg);
+		-webkit-transition: rotate(360deg);
+		-moz-transition: rotate(360deg);
+		-o-transition: rotate(360deg);
+		transition: rotate(360deg);
+	}
+	.header h1{
+		color:#fff;
+		padding:10px;
+	}
+	/*메인 바 툴 설정*/
+	.nav{
+		width:100%;
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		height:40px;
+		background-color:#69447c;
+		border-top:1px  solid #392719;
+		border-bottom:1px  solid #392719;
+	}
+	.nav ul{
+		list-style:none;
+		height:40px;
+	}
+	.nav ul li{
+		display:block;
+		height:40px;
+		float:left;
+		width:65px;
+		background: url("../images/nav.png") right top no-repeat;
+		background-position: right -1px;
+	}
+	.nav ul li a{
+		display:block;
+		text-decoration:none;
+		font-size:10px;
+		color:#fff;
+		line-height:40px;
+		text-align:center;
+	}
+	.nav ul li a:hover,.nav ul li a:focus{
+		background-color:#8d6d9e;
+		color:#fff;
+	}
+	/*메인화면 박스들 위치*/
+	.boxes{
+		background-color:#69447c;
+		height:150px;
+		border-bottom:1px  solid #392719;
+	}
+	.box{
+		width:140px;
+		float:left;
+		padding:10px;
+		text-align:justify;
+		color:#fff;
+		font-size:10px;
+	}
+	.box a{
+		border-radius:20px;
+		color:#000;
+		margin-left:50px;
+		width:50px;
+		height:20px;
+		line-height:20px;
+		text-decoration:none;
+		background-color:#fff;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-size:11px;
+		font-weight:bold;
+	}
+	/*메인 화면 중앙 슬라이더*/
+	.slider{
+		height:150px;
+		border-bottom:1px  solid #392719;
+	}
+	.slider img{
+		width:480px;
+		height:150px;
+	}
+	/*메인 화면 밑에 박스*/
+	.sidebar{
+		float:right;
+		width:120px;
+		height:250px;
+		background-color:#433;
+	}
+	.sidebar em{
+		
+	}
+	.sidebar img{
+		width:40px;
+		height:40px;
+		float:left;
+		margin-right:5px;
+		padding:5px;
+
+	}
+	.sidebar span{
+		padding:5px;
+		text-align:justify;
+		margin-top:-6px;
+		color:#fff;
+		font-size:8px;
+	}
+	/*메인 화면 밑에 박스*/
+	.text{
+		margin-top:-5px;
+		float:left;
+		width:360px;
+		height:250px;
+		color:#fff;
+		background-color:#000000;
+	}
+	.text img{
+		width:360px;
+		height:250px;
+	}
+	/*하단 카피라이트*/
+	.footer{
+		height:15px;
+		clear:both;
+		background:#ffffff;
+	}
+	.footer p{
+		text-align:right;
+		line-height:15px;
+		padding:0px 30px 0px 0px;
+		font-size:14px;
+	}
+	/*광고 칸*/
+	.adver{
+		float:left;
+		width:480px;
+		height:110px;
+		background-color:#FFC5CF;
+	}
+	.adver img{
+		float:left;
+		width:480px;
+		height:85px;
+	}
+	.adver p{
+		animation-name:slide-right;
+		animation-duration:2s;
+		animation-direction:alternate;
+		animation-iteration-count: infinite;
+		padding:10px;
+		
+		text-align:center;
+		margin-top:-5px;
+		margin-left:-100;
+		color:#000;
+		font-size:20px;
+		
+	}
+	/*광고 란에다 애니메이션 주기*/
+	@keyframes slide-right{
+		from {
+			margin-left: -100px;
+		}
+		
+		to {
+			margin-left: 100px;	
+		}
+	}
+}
+/*큰 화면 미디어 쿼리 min 601px*/
+@media only screen and (min-width:601px){
+	/*same with small media query except size*/
+	body{
+		background-image:url("../images/back.jpg");
+		width:960px;
+		margin:10px auto;
+	}
+	.planet{
+	}
+	.planet img{
+		margin: 10px;
+		-webkit-transition: -webkit-transform 4s;
+		-moz-transition: -moz-transform 4s;
+		-o-transition: -o-transform 4s;
+		transition: transform 4s;
+	}
+	.planet img:hover{
+		-webkit-transform: rotate(360deg);
+		-webkit-transition: rotate(360deg);
+		-moz-transition: rotate(360deg);
+		-o-transition: rotate(360deg);
+		transition: rotate(360deg);
+	}
+	.adver{
+		float:left;
+		width:100%;
+		height:170px;
+		background-color:#FFC5CF;
+	}
+	.adver img{
+		float:left;
+	}
+	.adver p{
+		animation-name:slide-right;
+		animation-duration:2s;
+		animation-direction:alternate;
+		animation-iteration-count: infinite;
+		padding:10px;
+		text-align:center;
+		margin-top:-5px;
+		margin-left:-200;
+		color:#000;
+		font-size:20px;
+		
+	}
+	@keyframes slide-right{
+		from {
+			margin-left: -200px;
+		}
+		
+		to {
+			margin-left: 200px;	
+		}
+	}
+	.profile{
+		border-radius:20px;
+		position: relative;
+		z-index:1; 
+		background: #69447c;
+		max-width: 380px;
+		height: 500px;
+		margin: 0 auto 100px;
+		padding: 45px;
+		text-align: center;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
+	.profile p{
+		padding: 0 70px;
+		text-align: left;
+		font-family: "Roboto", sans-serif;
+		color:#ffffff;
+		font-size: 15px;
+		text-shadow: 5px 7px 4px #000000;
+	}
+	.aboutme{
+		padding: 80px 0;
+		background: #69447c;
+		background: -webkit-gradient(linear, left top, right bottom, from(#69447c), to(#53e3a6));
+		background: linear-gradient(to bottom right, #69447c 0%, #daabf2 100%);
+		height: 580px;
+		overflow: hidden;
+	}
+	.chat{
+		padding: 0 100px;
+		background: #69447c;
+		text-align:left;
+		color:#ffffff;
+		
+	}
+	.chat table{
+		border-collapse: collapse;
+		width: 100%;
+	}
+	.chat a{
+		text-decoration:none;
+		color:#fff
+	}
+	.chat td, th{
+		border: 1px solid #aa7cc1;
+		text-align: left;
+		padding: 8px;
+	}
+	.chat tr:nth-child(even) {
+		background-color: #aa7cc1;
+	}
+	.chatnonebox{
+		font-size:13px;
+		border-radius:20px;
+		color:#69447c;
+		margin-left:10px;
+		width:100px;
+		height:30px;
+		line-height:30px;
+		text-decoration:none;
+		background-color:#69447c;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-weight:bold;
+	}
+	.chatend{
+		background: #69447c;
+		text-align:center;
+		color:#ffffff;
+		margin-top: 50px;
+		font-size:20px;
+	}
+	.chatbox{
+		margin-top:10px;
+		background: #69447c;
+		width:120px;
+		float:left;
+		padding:10px;
+		text-align:justify;
+		color:#fff;
+		font-size:14px;
+	}
+	.chatbox a{
+		font-size:13px;
+		border-radius:20px;
+		color:#000;
+		margin-left:10px;
+		width:100px;
+		height:30px;
+		line-height:30px;
+		text-decoration:none;
+		background-color:#fff;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-weight:bold;
+	}
+	.form{
+		border-radius:20px;
+		position: relative;
+		z-index:1; 
+		background: #69447c;
+		max-width: 380px;
+		margin: 0 auto 100px;
+		padding: 45px;
+		text-align: center;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
+	.form a{
+		color:#ffffff;
+	}
+	.form h1{
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		color:#ffffff;
+		margin: 0 0 25px;
+	}
+	.form input {
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		outline: 0;
+		background: #f2f2f2;
+		width: 80%;
+		border: 0;
+		margin: 0 0 15px;
+		padding: 15px;
+		box-sizing: border-box;
+		font-size: 14px;
+	}
+	.form button {
+		font-family: "Roboto", sans-serif;
+		font-style: normal;   
+		font-weight: normal;
+		text-transform: uppercase;
+		outline: 0;
+		background: #b491c6;
+		width: 80%;
+		border: 0;
+		padding: 15px;
+		color: #FFFFFF;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.form button:hover,.form button:active,.form button:focus {
+		background: #8d6d9e;
+	}
+	.loginer{
+		color:#fff;
+		width:100%;
+		height:35px;
+	}
+	.joiner{
+		padding: 80px 0;
+		background: #69447c;
+		background: -webkit-gradient(linear, left top, right bottom, from(#69447c), to(#53e3a6));
+		background: linear-gradient(to bottom right, #69447c 0%, #daabf2 100%);
+		height: 640px;
+		overflow: hidden;
+	}
+	.joiner p{
+		text-align: center;
+		line-height:30px;
+		color:#fff;
+		padding:0 15px;
+	}
+	.back{
+		width:960px;
+		margin:10px auto;
+	}
+
+	.header{
+		height:70px;
+		color:#fff;
+	}
+	.header img{
+		margin: 10px;
+		-webkit-transition: -webkit-transform 4s;
+		-moz-transition: -moz-transform 4s;
+		-o-transition: -o-transform 4s;
+		transition: transform 4s;
+	}
+	.header img:hover{
+		-webkit-transform: rotate(360deg);
+		-webkit-transition: rotate(360deg);
+		-moz-transition: rotate(360deg);
+		-o-transition: rotate(360deg);
+		transition: rotate(360deg);
+	}
+	.header h1{
+		color:#fff;
+		padding:10px;
+	}
+	.nav{
+		font-family: "Roboto", sans-serif; 
+		font-style: normal;   
+		font-weight: normal;
+		height:40px;
+		background-color:#69447c;
+		border-top:1px  solid #392719;
+		border-bottom:1px  solid #392719;
+	}
+	.nav ul{
+		list-style:none;
+		height:40px;
+	}
+	.nav ul li{
+		display:block;
+		height:40px;
+		float:left;
+		width:130px;
+		background: url("../images/nav.png") right top no-repeat;
+		background-position: right -1px;
+	}
+	.nav ul li a{
+		display:block;
+		text-decoration:none;
+		font-size:18px;
+		color:#fff;
+		line-height:40px;
+		text-align:center;
+	}
+	.nav ul li a:hover,.nav ul li a:focus{
+		background-color:#8d6d9e;
+		color:#fff;
+	}
+	.boxes{
+		background-color:#69447c;
+		height:200px;
+		border-bottom:1px  solid #392719;
+	}
+	.box{
+		width:300px;
+		float:left;
+		padding:10px;
+		text-align:justify;
+		color:#fff;
+		font-size:14px;
+	}
+	.box a{
+		border-radius:20px;
+		color:#000;
+		margin-left:100px;
+		width:90px;
+		height:30px;
+		line-height:30px;
+		text-decoration:none;
+		background-color:#fff;
+		display:block;
+		text-align:center;
+		text-transform:uppercase;
+		font-size:13px;
+		font-weight:bold;
+	}
+	.slider{
+		height:300px;
+		border-bottom:1px  solid #392719;
+	}
+	.sidebar{
+		float:right;
+		width:240px;
+		height:300px;
+		background-color:#433;
+	}
+
+	.sidebar img{
+		
+		float:left;
+		margin-right:5px;
+		padding:5px;
+
+	}
+	.sidebar span{
+		padding:10px;
+		text-align:justify;
+		margin-top:-5px;
+		color:#fff;
+		font-size:12px;
+	}
+	.text{
+		float:left;
+		width:720px;
+		height:300px;
+	}
+	.footer{
+		height:30px;
+		clear:both;
+		background:#ffffff;
+	}
+	.footer p{
+		text-align:right;
+		line-height:30px;
+		padding:0px 30px 0px 0px;
+		font-size:17px;
+	}
+}

@@ -1,0 +1,88 @@
+
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>BestPreswot</title>
+            <link rel="stylesheet" href="{% static 'css/style_2.css' %}">
+          <script type="text/javascript">
+          function parameterchange(pro_str, str1, str2, str3, str4, str5){
+         console.log(pro_str);   
+         console.log(str1);   
+         console.log(str2);   
+         var restr1 = pro_str.replace("%%", str5)
+         var restr2 = restr1.replace("$$", str4)
+         var restr3 = restr2 .replace("##", str3)
+         var restr4 = restr3 .replace("@@", str2)
+         var restr5 = restr4 .replace("!!", str1)
+         document.write( '<p>'+ '문제 : ' + restr5 + '</p>' );      
+          }
+          function alright_ans(str1, str2){
+         console.log(str1);
+         str3=document.getElementById("ans_ans").value;
+         console.log(str2);
+         console.log(str3);
+          }
+          </script>
+       </head>
+        <body>
+            <div class="back">
+                <div style="text-align:left" class="header" height="10%">
+                    <a href="http://18.217.88.225:8000/">
+                    <img src="{% static 'images/titler.png' %}"></a>
+                </div>
+                <div class="form" height="80%">
+                    
+                    <form name="problemform" id="problemform" action="" method="post">
+         {% csrf_token %}
+         {% for i in problem_id %}
+         <div class="problem1">
+            <p></p>
+            {% if i.2 == 0 %}
+            <p>문제 : {{i.1}}</p>
+            {% elif i.2 == 1 %}
+            <p>문제 : {{i.1}}<br><br>보기 : {{i.3}}</p>
+            
+            
+            {% elif i.2 == 2 %}
+            
+            {% for j in parameter_id %}
+            <script type="text/javascript">
+               parameterchange("{{i.1}}", "{{j.1}}", "{{j.2}}", "{{j.3}}", "{{j.4}}", "{{j.5}}");
+            </script>
+            {% endfor %}
+            {% endif %}
+                        </div>
+                        <div class="problem2">   
+            <p>정답</p> 
+            <input id="ans_ans" name="ans_ans" type="text" autofocus="autofocus"/>
+                        </div>
+         <div class="problem3">
+            {% for i in problem_id %}
+            {% for j in score_id %}
+            
+            {% if j.0 == i.0 %}
+            <button name="ans_sub" type="submit">제출</button>
+            <input id="ans_score" name="ans_score" type="hidden" value="{{j.1}}"/>
+            {% if i.2 == 2 %}
+            {% for k in parameter_id %}
+               <input id="ans_teacher" name="ans_teacher" type="hidden" value="{{k.6}}"/>
+            {% endfor %}
+            {% else %}
+               <input id="ans_teacher" name="ans_teacher" type="hidden" value="{{i.4}}"/>
+            {% endif %}
+            {% endif %}
+            
+            {% endfor %}
+            {% endfor %}
+         </div>
+         {% endfor %}
+                    </form>
+                </div>
+                <div class="footer" height="10%">
+                    <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                    </p>
+                </div>
+            </div>
+        </body>
+    </html>

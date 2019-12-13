@@ -1,0 +1,82 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html
+    lang="en">
+    <!--메인 화면-->
+    <head>
+        <meta charset="utf-8">
+        <title>BestPreswot</title>
+        <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
+        <script type="text/javascript">
+            function gotoclasses() {
+                var link = document.location.href;
+                var linksplit = link.split("teacherpage");
+                location.href = linksplit[0] + "teacherpage";
+                console.log(link);
+                console.log(linksplit[0]);
+            }
+        </script>
+    </head>
+    <body>
+       
+        <div class="back">
+            <div
+                style="text-align:left" class="header" height="10%">
+                <!--메인 로고-->
+                <a><img src="{% static 'images/titler.png' %}"></a>
+                <button id="myclasslogin" type="button" onclick="location.href='http://18.217.88.225:8000/'">로그아웃</button>
+                <button>내정보</button>
+                <button type="button" onclick="gotoclasses()">수강중인목록</button>
+            </div>
+            <div class="form" height="80%">
+                <h2>문제 은행</h2>
+                <div class="classtablel">
+                    <div class="classtablelin">
+                        <div class="classclass">
+                            <form name="classform" id="classform" action="" method="post">
+                                {% csrf_token %}
+                    		<button>문제추출</button>
+                            </form>
+                            <p></p>
+                        </div>
+                        <table id="myclasstable">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>난이도</th>
+                                    <th>배점</th>
+                                    <th>키워드</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyclass">
+                                {% for i in question_info %}
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <a>{{ i.0 }}</a>
+                                        </td>
+                                        <td>{{ i.1 }}</td>
+                                        
+                                        <td>
+                                            {% for j in keywords_info %}
+                                            {% if j.0 == i.2 %}"{{ j.1 }}"{% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!—copyright—>
+            <footer class="footer" height="10%">
+                <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

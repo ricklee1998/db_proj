@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html
+    lang="en">
+    <!--메인 화면-->
+    <head>
+        <meta charset="utf-8">
+        <title>BestPreswot</title>
+        <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
+        <script type="text/javascript">
+            function gotoclasses() {
+                var link = document.location.href;
+                location.href = link;
+                console.log(link);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="back">
+            <div
+                style="text-align:left" class="header" height="10%">
+                <!--메인 로고-->
+                <a location.href='./teacherpage/'><img src="{% static 'images/titler.png' %}"></a>
+                <button id="myclasslogin" type="button" onclick="location.href='http://18.217.88.225:8000/'">로그아웃</button>
+                <button>내정보</button>
+                <button type="button" onclick="gotoclasses()">수강중인목록</button>
+            </div>
+            <div class="form" height="80%">
+                <h2>수강 중인 과목</h2>
+                <div class="classtabler">
+                    <div class="classtablerin">
+                        <div class="classclass">
+                            <form name="classform" id="classform" action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit">수강신청</button>
+                            </form>
+                            <p></p>
+                        </div>
+                        <table id="myclasstable">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>과목</th>
+                                    <th>강사_id</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyclass">
+                                {% for i in class_name %}
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <a>{{ i.0 }}</a>
+                                        </td>
+                                        <td>{{ i.3 }}</td>
+                                        <td>
+                                            <button type="button" onclick="location.href='./studentpage/{{ i.1 }}/lecture/'">과목보기</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!—copyright—>
+            <footer class="footer" height="10%">
+                <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

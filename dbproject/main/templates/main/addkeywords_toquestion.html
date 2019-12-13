@@ -1,0 +1,43 @@
+
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>BestPreswot</title>
+            <link rel="stylesheet" href="{% static 'css/style_2.css' %}">
+       </head>
+        <body>
+            <div class="back">
+                <div style="text-align:left" class="header" height="10%">
+                    <a href="http://18.217.88.225:8000/">
+                    <img src="{% static 'images/titler.png' %}"></a>
+                </div>
+                <div class="form" height="80%">
+                    <div class="loginer">
+			{% for i in keywords %}
+            		{{ i.0 }} and {{ i.1 }}
+        		{% endfor %}
+                        <h1 style="text-align:center id=demo">추가할 키워드를 쓰시오</h1>
+                        <form name="loginform" id="loginform" action="" method="post">
+                            {% csrf_token %}
+                            <div class="loginform_input">
+                                k e y w o r d s:
+                                <input name="keyword" type="text" autofocus="autofocus"/>
+                            </div>
+                            <p></p>
+                            <div class="loginform_input">
+                                score_portion :
+                                <input name="score" type="text"/>
+                            </div>
+                            <p></p>
+                            <button>추가</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer" height="10%">
+                    <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                    </p>
+                </div>
+            </div>
+        </body>
+    </html>

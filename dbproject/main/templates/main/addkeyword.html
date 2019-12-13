@@ -1,0 +1,24 @@
+
+{% for i in row %}
+{{ i.0 }}
+and
+{{ i.1 }}
+{% endfor %}
+<!DOCTYPE html>
+{% load static %}
+<html lang = "en">
+<head>
+<meta charset = "UTF-8">
+<title>addkeyword</title>
+ <link rel="stylesheet" href="{% static 'css/style_4.css' %}">
+</head>
+<body>
+<div class="form" height=80%>
+<form action= "" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type = "submit" class = "btn btn-primary">저장</button>
+</form>
+</div>
+</body>
+</html>

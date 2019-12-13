@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html
+    lang="en">
+    <!--메인 화면-->
+    <head>
+        <meta charset="utf-8">
+        <title>BestPreswot</title>
+        <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
+        <script type="text/javascript">
+            var sendvar="";
+            function gotoclasses() {
+                var link = document.location.href;
+                location.href = link;
+                console.log(link);
+            }
+            function caller(str1){
+                sendvar = sendvar + str1+",";
+                document.getElementById("bankbank").value=sendvar;
+            }
+        </script>
+    </head>
+    <body>
+    <div class="form" height="80%">
+            <div class="loginer">
+                <h1 style="text-align:center id=demo">조건을 쓰시오</h1>
+                <form name="loginform" id="loginform" action="" method="post">
+                    {% csrf_token %}
+                    <div class="loginform_input">
+                        문항수:
+                        <input name="qnum" id="qnum" type="text" placeholder="num" autofocus="autofocus"/>
+                    </div>
+                    <p></p>
+                    <div class="loginform_input">
+                        평균난이도:
+                        <input name="avg" id="avg" type="text" placeholder="avg"/>
+                    </div>
+                    <p></p>
+                    <div class="loginform_input">
+                        총배점:
+                        <input name="score" id="score" type="text" placeholder="sum score"/>
+                    </div>
+                    <p></p>
+                    <div class="loginform_input">
+                        키워드:
+                        <input name="keyword" id="keyword" type="text" placeholder="keyword"/>
+                    </div>
+                    {% csrf_token %}
+                    <button name="select">고르기</button>
+                </form>
+            </div>
+        </div>
+        <div class="back">
+            <div class="form" height="80%">
+                <h2>추출된 목록</h2>
+                <div class="classtablec">
+                    <div class="classtablecin">
+                        <div class="classclass">
+                            <form name="classform" id="classform" action="" method="post">
+                                {% csrf_token %}
+                                {% for k in temp %}
+                                <script type="text/javascript">
+                                    caller("{{k.0}}", "{{k.1}}", "{{k.2}}", "{{k.3}}")
+                                </script>
+                                {% endfor %}
+                                <button name="nextextract" type="submit">다음</button>
+                                <input name="qnum1" id="qnum1" type="hidden"/>
+                                <input name="avg1" id="avg1" type="hidden"/>
+                                <input name="score1" id="score1" type="hidden"/>
+                                <input name="keyword1" id="keyword1" type="hidden"/>
+                            </form>
+                            <div class="classsub">
+                                <form name="classrevise" id="classrevise" action="" method="post">
+                                    {% csrf_token %}
+                                    <button name="banktoquestion" type="submit">저장</button>
+                                    <input type="hidden" name="bankbank" id="bankbank" value=""/>
+                                </form>
+                            </div>
+                            <p></p>
+                        </div>
+                        <table id="myclasstable">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>문제_id</th>
+                                    <th>difficulty</th>
+                                    <th>score</th>
+                                    <th>real difficulty</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyclass">
+                                {% for i in set %}
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ i.0 }}</td> 
+                                        <td>{{ i.1 }}</td>
+                                        <td>{{ i.2 }}</td>
+                                        <td>{{ i.3 }}</td>
+                                        <td>
+                                            <button value="{{i.0}}" type="submit" name="banktoquestion1">저장</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                {% for i in set %}
+                                <script type="text/javascript">
+                                    caller("{{i.0}}");
+                                </script>    
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!—copyright—>
+            <footer class="footer" height="10%">
+                <p>&copy;&nbsp;Copyright. By team_7 since 2019.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
